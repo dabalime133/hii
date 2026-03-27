@@ -5,92 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Tower Rush — Играть в краш-игру онлайн | Официальный сайт</title>
-    <meta name="description" content="Официальная краш-игра Tower Rush. Строй башни, применяй лучшие стратегии и забирай выигрыш с максимальным коэффициентом. Быстрые выплаты и честный алгоритм.">
-    <meta name="keywords" content="Tower Rush, тавер раш, краш игра, tower rush 1win, играть онлайн, стратегии tower rush, заработок, игра на деньги, provably fair">
+    <title>Tower Rush — Играть в краш-игру со строительством башни | Официальный сайт</title>
+    <meta name="description" content="Тактическая игра Tower Rush. Строй башню этаж за этажом, увеличивай множитель и забирай выигрыш до того, как снаряд разрушит крепость. Быстрые выплаты.">
+    <meta name="keywords" content="Tower Rush, тавер раш, краш игра башня, galaxsys tower rush, играть на деньги, тактика tower rush, заработок онлайн, provably fair">
     <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="Tower Rush — Эпическая краш-игра">
+    <meta property="og:description" content="Возведи башню, защити свой коэффициент и сорви куш до крушения!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://towerrush.vercel.app/">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* Базовые переменные и сброс */
+        /* CSS Переменные для быстрого редактирования */
         :root {
-            --bg-main: #09090e;
-            --bg-glass: rgba(255, 255, 255, 0.05);
-            --border-glass: rgba(255, 255, 255, 0.1);
-            --color-primary: #ff5000;
-            --color-primary-hover: #ff7333;
-            --color-accent: #00fa65;
+            --bg-dark: #0b0c10;
+            --bg-panel: #1f2833;
+            --color-primary: #ff4500; /* Огонь/Осада */
+            --color-primary-hover: #ff5e22;
+            --color-accent: #45a29e;  /* Неоновый акцент для контраста */
+            --color-success: #66fcf1; /* Цвет выигрыша */
+            --text-main: #c5c6c7;
             --text-light: #ffffff;
-            --text-muted: #8b8b9f;
-            --font-main: 'Inter', sans-serif;
-            --transition: all 0.3s ease;
+            --font-main: 'Montserrat', sans-serif;
         }
 
+        /* Базовый сброс */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-main);
-            background-color: var(--bg-main);
-            color: var(--text-light);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Утилиты и типографика */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .text-center { text-align: center; }
-        h1, h2, h3 { font-weight: 900; line-height: 1.2; text-transform: uppercase; }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 3rem; }
+        
+        /* Типографика */
+        h1, h2, h3 { color: var(--text-light); font-weight: 900; text-transform: uppercase; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
+        h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 3rem; }
         .highlight { color: var(--color-primary); }
 
         /* Кнопки */
         .btn {
-            display: inline-block;
-            background: linear-gradient(90deg, #d43b00, var(--color-primary));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #b33000, var(--color-primary));
             color: var(--text-light);
-            font-size: 1.125rem;
-            font-weight: 700;
+            font-size: 1.2rem;
+            font-weight: 900;
             text-transform: uppercase;
             text-decoration: none;
-            padding: 18px 45px;
-            border-radius: 12px;
-            border: none;
+            padding: 20px 50px;
+            border-radius: 8px;
+            border: 2px solid transparent;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(255, 80, 0, 0.4);
-            transition: var(--transition);
-            animation: pulse 2s infinite;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: pulse-shadow 2s infinite;
         }
         .btn:hover {
-            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 80, 0, 0.6);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.8);
+            border-color: #ffaa80;
             animation: none;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 80, 0, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 80, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 80, 0, 0); }
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 69, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
         }
 
         /* Навигация */
         header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            padding: 20px 0;
-            background: rgba(9, 9, 14, 0.8);
+            position: fixed; top: 0; width: 100%;
+            background: rgba(11, 12, 16, 0.9);
             backdrop-filter: blur(10px);
-            z-index: 100;
-            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 0;
         }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 900; color: var(--text-light); text-decoration: none; letter-spacing: 1px; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 900; color: var(--text-light); text-decoration: none; letter-spacing: 2px; }
         .logo span { color: var(--color-primary); }
-        .nav-btn { background: transparent; border: 2px solid var(--color-primary); padding: 10px 25px; border-radius: 8px; font-size: 0.9rem; animation: none; box-shadow: none; }
-        .nav-btn:hover { background: var(--color-primary); transform: none; box-shadow: 0 0 15px rgba(255, 80, 0, 0.5); }
 
         /* Hero секция */
         .hero {
@@ -99,184 +105,188 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background: radial-gradient(circle at center, rgba(30,15,10,0.8) 0%, var(--bg-main) 100%), 
-                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(to bottom, rgba(11,12,16,0.5), var(--bg-dark)),
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop') center/cover;
             padding-top: 80px;
         }
-        .hero::after {
-            content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, var(--bg-main) 100%); z-index: 1;
-        }
         .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
+            position: relative; z-index: 2;
+            max-width: 900px; text-align: center;
+        }
+        
+        /* Симулятор башни (Логика Galaxsys) */
+        .tower-simulator {
+            background: rgba(31, 40, 51, 0.7);
+            border: 2px solid var(--color-accent);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 0 auto 30px;
+            max-width: 300px;
+            box-shadow: 0 0 30px rgba(69, 162, 158, 0.3);
+            backdrop-filter: blur(5px);
         }
         .multiplier {
-            font-size: clamp(4rem, 8vw, 6rem);
-            font-weight: 900;
-            color: var(--color-accent);
-            text-shadow: 0 0 30px rgba(0, 250, 101, 0.4);
-            margin-bottom: 1rem;
+            font-size: 4rem; font-weight: 900; color: var(--color-success);
+            text-shadow: 0 0 20px var(--color-success);
             font-variant-numeric: tabular-nums;
-            line-height: 1;
+            margin-bottom: 10px; line-height: 1;
         }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
-        .hero p { font-size: 1.25rem; color: #ccc; margin-bottom: 2.5rem; max-width: 700px; margin-inline: auto; }
+        .tower-blocks { display: flex; flex-direction: column-reverse; gap: 5px; height: 120px; justify-content: flex-start; align-items: center; }
+        .block {
+            width: 80%; height: 25px;
+            background: linear-gradient(90deg, #45a29e, #66fcf1);
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            animation: buildBlock 0.3s ease-out;
+        }
+        .block.crashed { background: linear-gradient(90deg, #8b0000, var(--color-primary)); }
+        
+        @keyframes buildBlock {
+            0% { transform: translateY(-20px) scale(1.1); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
 
-        /* Секции общие стили */
-        section { padding: 100px 0; position: relative; z-index: 2; }
-
-        /* Карточки (Сетка) */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* Карточки */
+        section { padding: 100px 0; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card {
-            background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-            backdrop-filter: blur(10px);
+            background: var(--bg-panel);
             padding: 40px 30px;
-            border-radius: 20px;
-            transition: var(--transition);
+            border-radius: 12px;
+            border-top: 4px solid var(--color-primary);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--color-primary); background: rgba(255, 255, 255, 0.08); }
-        .card-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
-        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-light); }
-        .card p { color: var(--text-muted); font-size: 1rem; }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 69, 0, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+        .card:hover { transform: translateY(-10px); }
+        .card-icon { font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+        .card h3 { font-size: 1.4rem; margin-bottom: 15px; }
 
-        /* SEO FAQ (Нативные аккордеоны) */
+        /* SEO FAQ */
         .faq-wrapper { max-width: 800px; margin: 0 auto; }
         details {
-            background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: 12px;
+            background: var(--bg-panel);
             margin-bottom: 15px;
-            overflow: hidden;
-            transition: var(--transition);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-accent);
+            transition: all 0.3s ease;
         }
-        details[open] { border-color: var(--color-primary); }
+        details[open] { border-left-color: var(--color-primary); background: #25303d; }
         summary {
             padding: 20px 25px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-size: 1.2rem; font-weight: 700; color: var(--text-light);
+            cursor: pointer; list-style: none;
+            display: flex; justify-content: space-between; align-items: center;
         }
         summary::-webkit-details-marker { display: none; }
-        summary::after { content: '+'; color: var(--color-primary); font-size: 1.5rem; transition: transform 0.3s ease; }
-        details[open] summary::after { transform: rotate(45deg); }
-        .faq-content { padding: 0 25px 25px; color: var(--text-muted); }
+        summary::after { content: '+'; color: var(--color-primary); font-size: 1.8rem; font-weight: 400; transition: transform 0.3s; }
+        details[open] summary::after { transform: rotate(45deg); color: var(--color-primary); }
+        .faq-content { padding: 0 25px 25px; color: var(--text-main); }
 
         /* Footer */
         footer {
-            background: #050508;
-            padding: 60px 0 30px;
-            border-top: 1px solid var(--border-glass);
-            text-align: center;
+            background: #050608; padding: 80px 0 40px; text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
-        .footer-cta h2 { font-size: 2.5rem; margin-bottom: 2rem; }
-        .disclaimer { margin-top: 50px; font-size: 0.85rem; color: #666; max-width: 800px; margin-inline: auto; }
-        
-        /* Адаптив */
-        @media (max-width: 768px) {
-            header { padding: 15px 0; }
-            .nav-btn { display: none; } /* Скрываем кнопку в хедере на мобилках для чистоты дизайна */
-            section { padding: 60px 0; }
+        .disclaimer {
+            margin-top: 50px; font-size: 0.85rem; color: #777;
+            max-width: 900px; margin-inline: auto; border: 1px solid #333; padding: 20px; border-radius: 8px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container nav-container">
-            <a href="/" class="logo" aria-label="На главную">TOWER<span>RUSH</span></a>
-            <a href="https://lkzq.cc/644450" target="_blank" rel="noopener noreferrer" class="btn nav-btn">Играть сейчас</a>
+        <div class="container nav-wrapper">
+            <a href="/" class="logo" aria-label="Логотип Tower Rush">TOWER<span>RUSH</span></a>
+            <a href="https://lkzq.cc/644450" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 10px 25px; font-size: 1rem; animation:none;">Вступить в бой</a>
         </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero" aria-label="Главный экран">
             <div class="hero-content container">
-                <div class="multiplier" id="crash-multiplier" aria-live="polite">1.00x</div>
-                <h1>Легендарная краш-игра <span class="highlight">Tower Rush</span></h1>
-                <p>Возведи свою башню, следи за ростом коэффициента и успей забрать реальный выигрыш до того, как стены рухнут. Твоя стратегия — твои деньги!</p>
-                <a href="https://lkzq.cc/644450" target="_blank" rel="noopener noreferrer" class="btn">Начать игру и забрать бонус</a>
+                
+                <div class="tower-simulator" aria-hidden="true">
+                    <div class="multiplier" id="multi-display">1.00x</div>
+                    <div class="tower-blocks" id="tower-blocks">
+                        </div>
+                </div>
+
+                <h1>Возведи башню. <span class="highlight">Сорви куш.</span></h1>
+                <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 700px; margin-inline: auto;">
+                    Инновационная краш-игра со строительством. Каждый возведенный этаж увеличивает твой множитель. Успей забрать выигрыш до того, как вражеский залп обрушит стены!
+                </p>
+                <a href="https://lkzq.cc/644450" target="_blank" rel="noopener noreferrer" class="btn">Начать строительство на деньги</a>
             </div>
         </section>
 
-        <section class="container text-center">
-            <h2>Как играть и выигрывать в <span class="highlight">Tower Rush</span></h2>
-            <div class="grid">
+        <section class="container text-center" aria-labelledby="mechanics-title">
+            <h2 id="mechanics-title">Архитектура победы: <span class="highlight">Как играть?</span></h2>
+            <div class="grid-3">
                 <article class="card">
-                    <div class="card-icon" role="img" aria-label="Иконка Ставка">🎯</div>
-                    <h3>1. Сделай ставку</h3>
-                    <p>Пройди быструю регистрацию, пополни баланс и выбери сумму ставки. Доступна настройка автовывода для безопасной игры.</p>
+                    <div class="card-icon" role="img" aria-label="Фундамент">🧱</div>
+                    <h3>1. Закладка фундамента</h3>
+                    <p>Сделай ставку перед началом раунда. Как только время ожидания истечет, начнется возведение первого этажа твоей крепости.</p>
                 </article>
                 <article class="card">
-                    <div class="card-icon" role="img" aria-label="Иконка Рост">🚀</div>
-                    <h3>2. Жди умножения</h3>
-                    <p>С началом раунда башня начинает расти, а вместе с ней стремительно увеличивается твой коэффициент выигрыша.</p>
+                    <div class="card-icon" role="img" aria-label="Строительство">🏗️</div>
+                    <h3>2. Рост по этажам</h3>
+                    <p>В отличие от скучных графиков, здесь выигрыш растет ступенчато! Каждый успешно достроенный блок моментально фиксирует новый коэффициент.</p>
                 </article>
                 <article class="card">
-                    <div class="card-icon" role="img" aria-label="Иконка Деньги">💰</div>
-                    <h3>3. Забери куш</h3>
-                    <p>Нажми кнопку «Забрать» до того, как произойдет Crash (крушение башни). Выигрыш моментально зачисляется на счет.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="container">
-            <h2 class="text-center">Почему выбирают <span class="highlight">Tower Rush</span></h2>
-            <div class="grid">
-                <article class="card">
-                    <div class="card-icon">🛡️</div>
-                    <h3>Система Provably Fair</h3>
-                    <p>100% честный алгоритм генерации случайных чисел. Момент обрушения башни зашифрован до начала раунда, и любой игрок может проверить честность исхода.</p>
-                </article>
-                <article class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Моментальные выплаты</h3>
-                    <p>Забудьте о долгих проверках. Выводите заработанные средства за пару кликов на любые популярные платежные системы или криптокошельки.</p>
-                </article>
-                <article class="card">
-                    <div class="card-icon">📈</div>
-                    <h3>Высокий RTP</h3>
-                    <p>Официальная краш-игра предлагает высокий процент отдачи игрокам. Разрабатывайте свои тактики и стратегии для минимизации рисков.</p>
-                </article>
-                <article class="card">
-                    <div class="card-icon">📱</div>
-                    <h3>Удобно с телефона</h3>
-                    <p>Интерфейс идеально оптимизирован под мобильные устройства. Играйте в Tower Rush без лагов и зависаний в любом месте.</p>
+                    <div class="card-icon" role="img" aria-label="Выигрыш">💥</div>
+                    <h3>3. Фиксация трофеев</h3>
+                    <p>Враг ведет обстрел. Твоя задача — нажать кнопку «Забрать» до того, как ядро попадет в башню и обрушит ее. Твой тайминг решает всё.</p>
                 </article>
             </div>
         </section>
 
-        <section class="container">
-            <h2 class="text-center">Частые вопросы <span class="highlight">(FAQ)</span></h2>
+        <section class="container" style="background: var(--bg-panel); border-radius: 20px; padding: 60px 40px; margin-top: 40px;" aria-labelledby="features-title">
+            <h2 id="features-title" class="text-center">Преимущества тактической <span class="highlight">Краш-игры</span></h2>
+            <div class="grid-3">
+                <div class="text-center">
+                    <div style="font-size: 3rem; color: var(--color-accent); margin-bottom: 10px;">⚖️</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Алгоритм Provably Fair</h3>
+                    <p style="font-size: 0.95rem;">Честность каждого обрушения зашифрована и может быть проверена любым игроком. Никаких подкруток.</p>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 3rem; color: var(--color-accent); margin-bottom: 10px;">⚡</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Мгновенный автовывод</h3>
+                    <p style="font-size: 0.95rem;">Настрой авто-кэшаут на определенный этаж (например, 2.00x), и система сама заберет выигрыш даже при потере связи.</p>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 3rem; color: var(--color-accent); margin-bottom: 10px;">📱</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Адаптация для смартфонов</h3>
+                    <p style="font-size: 0.95rem;">Динамичная графика осады оптимизирована для мобильных устройств. Строй башни без лагов.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" aria-labelledby="faq-title">
+            <h2 id="faq-title" class="text-center">Разведданные <span class="highlight">(FAQ)</span></h2>
             <div class="faq-wrapper">
                 <details>
-                    <summary>Какая стратегия в Tower Rush самая прибыльная?</summary>
+                    <summary>В чем отличие этой игры от классического Авиатора?</summary>
                     <div class="faq-content">
-                        <p>Единой беспроигрышной стратегии не существует, так как игра основана на генераторе случайных чисел. Однако опытные игроки часто используют тактику автовывода на малых коэффициентах (например, 1.2x - 1.5x) для стабильного прироста банка, либо систему Мартингейла.</p>
+                        <p>Главная особенность — <strong>поэтапный (ступенчатый) рост коэффициента</strong>. Вы визуально контролируете процесс: строится этаж, фиксируется множитель. Это дает паузу для принятия решения, рисковать ли переходом на следующий уровень строительства, в отличие от непрерывно летящего самолета.</p>
                     </div>
                 </details>
                 <details>
-                    <summary>Можно ли играть в Тавер Раш бесплатно?</summary>
+                    <summary>Какая тактика самая прибыльная в Tower Rush?</summary>
                     <div class="faq-content">
-                        <p>Да, на официальном сайте доступен демо-режим. Вы можете изучить механику, протестировать интерфейс и свои тактики без риска для реального баланса.</p>
+                        <p>Опытные стратеги используют метод страховки: делают две ставки одновременно. Первую закрывают на низком этаже (1.5x - 2.0x) для перекрытия расходов, а вторую ставку держат до верхних этажей в поисках крупного множителя (10x и выше).</p>
                     </div>
                 </details>
                 <details>
-                    <summary>Как вывести выигранные деньги?</summary>
+                    <summary>Как быстро выплачиваются выигранные деньги?</summary>
                     <div class="faq-content">
-                        <p>Вывод средств доступен в личном кабинете после регистрации. Вы можете использовать банковские карты, электронные кошельки и криптовалюту. Средства поступают практически моментально.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary>Игра зависла во время раунда, что будет со ставкой?</summary>
-                    <div class="faq-content">
-                        <p>Если вы настроили функцию «Автовывод» (Auto Cashout), система автоматически заберет ваш выигрыш на заданном коэффициенте даже при потере соединения с интернетом.</p>
+                        <p>Средства зачисляются на ваш баланс моментально сразу после нажатия кнопки «Забрать». Вывод на карты и электронные кошельки занимает от нескольких минут в зависимости от выбранного платежного метода.</p>
                     </div>
                 </details>
             </div>
@@ -285,55 +295,79 @@
 
     <footer>
         <div class="container">
-            <div class="footer-cta">
-                <h2>Готов бросить вызов судьбе?</h2>
-                <a href="https://lkzq.cc/644450" target="_blank" rel="noopener noreferrer" class="btn">Ворваться в игру</a>
-            </div>
+            <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Враг заряжает пушки. <br><span class="highlight">Твой ход.</span></h2>
+            <a href="https://lkzq.cc/644450" target="_blank" rel="noopener noreferrer" class="btn">Начать игру прямо сейчас</a>
             
-            <p class="disclaimer">
-                ⚠️ Внимание: Tower Rush — это азартное развлечение. Азартные игры могут вызывать зависимость. Пожалуйста, играйте ответственно и только на те средства, которые вы можете позволить себе потерять. Данный сайт носит информационный характер. Доступ разрешен только лицам старше 18 лет (18+).
-            </p>
-            <p style="color: #444; margin-top: 20px; font-size: 0.8rem;">
-                &copy; 2024 Tower Rush Official. Все права защищены.
-            </p>
+            <div class="disclaimer">
+                <strong>⚠️ Ответственная игра (18+):</strong> Tower Rush — это азартная краш-игра. Исход каждого раунда определяется генератором случайных чисел (ГСЧ). Играйте ответственно, используйте банкролл-менеджмент и никогда не рассматривайте азартные игры как основной источник дохода. Сайт носит исключительно информационный характер.
+            </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const display = document.getElementById('crash-multiplier');
-            let current = 1.00;
-            let targetCrash = 0;
-            let animationFrame;
+        document.addEventListener('DOMContentLoaded', () => {
+            const display = document.getElementById('multi-display');
+            const blocksContainer = document.getElementById('tower-blocks');
             
-            function startSimulation() {
-                current = 1.00;
-                display.style.color = 'var(--color-accent)';
-                display.style.textShadow = '0 0 30px rgba(0, 250, 101, 0.4)';
-                // Имитация случайного краша от 1.15 до 5.50
-                targetCrash = (Math.random() * 4.35 + 1.15).toFixed(2);
+            let currentMulti = 1.00;
+            let blocksCount = 0;
+            let targetCrashBlocks = 0;
+            let buildInterval;
+
+            function startRound() {
+                // Сброс
+                currentMulti = 1.00;
+                blocksCount = 0;
+                blocksContainer.innerHTML = '';
+                display.innerText = '1.00x';
+                display.style.color = 'var(--color-success)';
+                display.style.textShadow = '0 0 20px var(--color-success)';
                 
-                function update() {
-                    // Имитация параболического роста (чем больше число, тем быстрее растет)
-                    current += 0.005 + (current * 0.003);
+                // Рандомно определяем, на каком блоке башня рухнет (от 2 до 8 блоков для демо)
+                targetCrashBlocks = Math.floor(Math.random() * 7) + 2;
+
+                // Запускаем ступенчатое строительство (каждые 800мс строится этаж)
+                buildInterval = setInterval(buildNextFloor, 800);
+            }
+
+            function buildNextFloor() {
+                blocksCount++;
+                
+                // Создаем визуальный блок (этаж)
+                const block = document.createElement('div');
+                block.className = 'block';
+                
+                // Если достигли критического этажа - КРАШ
+                if (blocksCount >= targetCrashBlocks) {
+                    clearInterval(buildInterval);
+                    block.classList.add('crashed');
+                    blocksContainer.appendChild(block);
                     
-                    if(current >= targetCrash) {
-                        current = targetCrash;
-                        display.innerText = 'CRASH ' + Number(current).toFixed(2) + 'x';
-                        display.style.color = 'var(--color-primary)';
-                        display.style.textShadow = '0 0 30px rgba(255, 80, 0, 0.6)';
-                        cancelAnimationFrame(animationFrame);
-                        setTimeout(startSimulation, 3500); // Рестарт через 3.5 сек
-                    } else {
-                        display.innerText = Number(current).toFixed(2) + 'x';
-                        animationFrame = requestAnimationFrame(update);
+                    display.innerText = 'CRASH ' + currentMulti.toFixed(2) + 'x';
+                    display.style.color = 'var(--color-primary)';
+                    display.style.textShadow = '0 0 20px rgba(255, 69, 0, 0.8)';
+                    
+                    // Перекрашиваем все блоки в красный для эффекта обрушения
+                    document.querySelectorAll('.block').forEach(b => b.classList.add('crashed'));
+                    
+                    // Рестарт через 3 секунды
+                    setTimeout(startRound, 3000);
+                } else {
+                    // Успешная постройка этажа
+                    blocksContainer.appendChild(block);
+                    // Шаг множителя (увеличивается с каждым этажом)
+                    currentMulti += (0.15 * blocksCount); 
+                    display.innerText = currentMulti.toFixed(2) + 'x';
+                    
+                    // Ограничиваем высоту башни визуально, удаляя старые блоки снизу, если их слишком много
+                    if (blocksContainer.children.length > 4) {
+                        blocksContainer.removeChild(blocksContainer.firstElementChild);
                     }
                 }
-                animationFrame = requestAnimationFrame(update);
             }
-            
-            // Небольшая задержка перед первым запуском
-            setTimeout(startSimulation, 500);
+
+            // Первый запуск с небольшой задержкой
+            setTimeout(startRound, 1000);
         });
     </script>
 </body>
