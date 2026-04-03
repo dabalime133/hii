@@ -1090,12 +1090,39 @@
     .mult-display {
       grid-template-columns: repeat(3, 1fr);
     }
+
+    /* Убираем рамки и делаем блок на всю ширину для мобильных */
+    #demo {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    #demo .section-header {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .demo-container {
+      max-width: 100%;
+    }
+
+    .demo-frame-wrap {
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      width: 100%;
+    }
+
+    .demo-container p {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
   }
 
   @media (max-width: 480px) {
     .demo-frame-wrap {
       aspect-ratio: 9/16;
-      max-height: 75vh;
+      max-height: 85vh; /* Увеличено для вида вертикального видео */
     }
 
     .mult-display {
@@ -1106,7 +1133,6 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#" class="nav-logo">Tower Rush</a>
@@ -1130,12 +1156,10 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
 
-  <!-- Floating blocks -->
   <div id="floatingBlocks"></div>
 
   <div class="hero-content">
@@ -1194,7 +1218,6 @@
   </div>
 </section>
 
-<!-- DEMO SECTION -->
 <section id="demo">
   <div class="section-header reveal">
     <span class="section-tag">Демо · Бесплатно</span>
@@ -1204,7 +1227,6 @@
   <div class="demo-container reveal reveal-delay-1">
     <div class="demo-frame-wrap" id="demoWrap">
 
-      <!-- Placeholder -->
       <div class="demo-placeholder" id="demoPlaceholder" onclick="launchDemo()">
         <div class="demo-play-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="#0A0C10">
@@ -1217,13 +1239,11 @@
         </div>
       </div>
 
-      <!-- Loading -->
       <div class="demo-loading" id="demoLoading">
         <div class="spinner"></div>
         <p style="font-size:14px;color:var(--text-muted)">Загрузка игры...</p>
       </div>
 
-      <!-- iFrame -->
       <iframe
         id="demoIframe"
         class="demo-iframe"
@@ -1240,7 +1260,6 @@
   </div>
 </section>
 
-<!-- LOGIC / FEATURES -->
 <section id="logic">
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-header reveal">
@@ -1288,7 +1307,6 @@
   </div>
 </section>
 
-<!-- BONUSES -->
 <section id="bonuses">
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-header reveal">
@@ -1321,7 +1339,6 @@
   </div>
 </section>
 
-<!-- MULTIPLIERS -->
 <section id="multipliers">
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-header reveal">
@@ -1346,7 +1363,6 @@
   </div>
 </section>
 
-<!-- SEO TEXT SECTION -->
 <section id="info">
   <div class="info-inner reveal">
 
@@ -1399,7 +1415,6 @@
   </div>
 </section>
 
-<!-- STRATEGIES -->
 <section id="strategies">
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-header reveal">
@@ -1451,7 +1466,6 @@
   </div>
 </section>
 
-<!-- CTA -->
 <section id="cta">
   <div class="cta-inner">
     <p class="section-tag reveal">Бонус для новых игроков</p>
@@ -1478,7 +1492,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <a href="#" class="footer-logo">Tower Rush</a>
